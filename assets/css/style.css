@@ -1,1 +1,318 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Poppins';
+}
 
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --bg-color: #080808;
+    --text-color: white;
+    --main-color: #E3E78C;
+
+    /* GREEN COLOR PALETTE */
+    --green-2: #E3E78C;
+    --green-3:#ACB232;
+    --green-4:#5A6E1B;
+    --green-5:#394D16;
+    --green-6: #243816;
+    --green-7: #E3FBA7;
+    --green-8: #00FF51;
+    --gray-1: #03191E;
+    --golden-1: #ffdc73;
+     /* Clippy for slider
+    
+    clip-path: polygon(27% 0, 74% 0, 80% 11%, 100% 11%, 100% 88%, 90% 100%, 9% 100%, 0 90%, 0 14%, 20% 13%);
+
+    */
+}
+body {
+    background-image: url('../img/bg.jpg');
+    background-size: cover;          /* makes it fill the screen */
+    background-position: center;     /* keeps it centered */
+    background-repeat: no-repeat;    /* prevents tiling */
+    background-attachment: fixed;    /* keeps it in place while scrolling */
+    height: 100vh;                   /* ensures full screen height */
+    width: 100%;
+    margin: 0;
+    padding: none;
+    color: var(--text-color);
+}
+
+body::before {
+    content: "";
+    position: fixed; /* so it stays put during scroll */
+    inset: 0; /* shorthand for top, right, bottom, left = 0 */
+    background-color: rgba(0, 0, 0, 0.5); /* Adjust 0.5 for darkness */
+    z-index: -1; /* ensures it sits behind all body content */
+}
+
+
+.header {
+    position:fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 1.5rem 12%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+#menu-icon{
+    font-size: 3.6rem;
+    color: var(--main-color);
+    display: none;  
+}
+.logo {
+    font-size: 2rem;
+    color: var(--text-color);
+    font-weight: 800;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1);
+}
+span {
+    color:var(--main-color)
+}
+
+.navbar a {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    margin-left: 4rem;
+    font-weight: 500;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s ease;
+}
+.navbar a:hover {
+    border-bottom: 3px solid var(--main-color);
+    color:var(--main-color)
+}
+
+section {
+    min-height: 100vh;
+    padding: 10rem 12%
+}
+
+
+.social-icons a{
+    display: inline-flex;
+    justify-content: center;
+    font-size: 1.5rem;
+    padding: 1rem;
+    background: transparent;
+    border: 2px solid var(--main-color);
+    border-radius: 50%;
+    color: var(--main-color);
+    margin: 3rem 0.5rem;
+    transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--text-color);
+    background-color: var(--main-color);
+    transform: scale(1.2)translateY(-5px);
+    box-shadow: 0 0 25px var(--main-color);
+}
+
+.btn-group {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 3rem;
+    background:var(--main-color);
+    box-shadow: 0 0 25px var(--main-color);
+    border-radius: 3rem;
+    font-size: 1.3rem;
+    color:black;
+    border: 2px solid transparent;
+    font-weight: 600;
+    transition: 600 ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--main-color),
+                    0 0 50px var(--main-color);
+}
+
+.btn-group a:nth-of-type(2) {
+    background-color: black;
+    color: var(--main-color);
+    border: 2px solid var(--main-color);
+    box-shadow: 0 0 25px transparent;
+}
+.btn-group a:nth-of-type(2):hover {
+    box-shadow: 0 0 25px var(--main-color);
+    background-color: var(--main-color);
+    color: black;
+}
+
+.carousel {
+    padding-block: 0%;
+    padding-top: 7rem;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-track{
+    list-style: none;
+    display:flex;
+    transition: trnasform 0.5s ease;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slide {
+    min-width:100%;
+    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease-in-out;
+
+}
+
+.carousel-slide::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--golden-1);
+  clip-path: polygon(27% 0, 74% 0, 80% 11%, 100% 11%, 100% 88%, 90% 100%, 9% 100%, 0 90%, 0 14%, 20% 13%);
+  transform: scale(1.02); /* slightly larger to simulate border */
+  z-index: 0;
+  
+}
+
+.carousel-slide.active {
+    position: relative;
+    opacity: 1;
+    z-index: 1;
+}
+
+.carousel-slide img{
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    clip-path: polygon(27% 0, 74% 0, 80% 11%, 100% 11%, 100% 88%, 90% 100%, 9% 100%, 0 90%, 0 14%, 20% 13%);}
+
+.carousel-button {
+    position: absolute;
+    top: 52.5%;
+    right: 72.5%;
+    left: 72.5%;
+    background:none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 20;
+}
+
+
+#carousel-arrows-prev {
+	width: 75px;
+    height: 65px;
+  
+  &:hover {
+    
+    polygon {
+      fill: var(--golden-1);
+      transition: all .2s ease-out;
+
+      &.arrow-bottom {
+        transform: translateX(-20px);
+      }
+
+      &.arrow-top {
+        transform: translateX(-10px);
+      } 
+    }
+  }
+}
+
+#carousel-arrows-next {
+	width: 75px;
+    height: 65px;
+  
+  &:hover {
+    
+    polygon {
+      fill: var(--golden-1);
+      transition: all .2s ease-out;
+
+      &.arrow-bottom {
+        transform: translateX(20px);
+      }
+
+      &.arrow-top {
+        transform: translateX(10px);
+      } 
+    }
+  }
+}
+
+polygon {
+  fill: var(--golden-1);
+  transition: all .2s ease-out;
+    
+  &.arrow-middle {
+	  opacity: 0.75;
+	}
+
+	&.arrow-top {
+	  opacity: 0.5
+	}
+}
+.carousel-button:hover{
+    font-size: 40px;
+}
+.carousel-button.prev { left: 10px; }
+.carousel-button.next { right: 10px; }
+
+.carousel-text{
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.visuallyhidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
