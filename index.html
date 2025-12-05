@@ -1,64 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StartUp BTS</title>
-    <link rel="stylesheet" href="assets/css/style.css"/>
-</head>
-<body>
-    <header class="header">
-        <a href="/index.html" class="logo"> Ma <span>StartUp</span></a>
-        <nav class="navbar">
-            <a href="/index.html" class="nav-link active">Home</a>
-            <a href="/about.html" class="nav-link">About</a>
-            <a href="/contact.html" class="nav-link">Contact</a>
-        </nav>
-    </header>
-    
-    <section class="carousel" aria-labelledby="carouselheading">
-        <h3 id="carouselheading" class="visuallyhidden">Carousel</h3>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Aurora Games - Studio Indépendant</title>
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Nanum+Pen+Script&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+        <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="assets/css/style.css">
+    </head>
+    <body>
 
-        <button class="carousel-button prev">
-        <svg id="carousel-arrows-prev">
-            <polygon class="arrow arrow-top" points="48.1,37.6 74.7,1.8 76,3.3 50.7,37.6 76,71.9 74.7,73.7" />
-            <polygon class="arrow arrow-middle" points="48.1,37.6 74.7,1.8 76,3.3 50.7,37.6 76,71.9 74.7,73.7" />
-            <polygon class="arrow arrow-bottom" points="48.1,37.6 74.7,1.8 76,3.3 50.7,37.6 76,71.9 74.7,73.7" />
-        </svg>
-        </button>
+        <div class="hero-background">
+            <header>
+                <div class="logo">Aurora <br><span>Games</span></div>
+                
+                <nav>
+                    <ul>
+                        <li><a href="/index.html" class="active">Accueil</a></li>
+                        <li><a href="/our_games.html">Nos Jeux</a></li>
+                        <li><a href="/about.html">À Propos</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
 
-        <div class="carousel-track-container">
-            <ul class="carousel-track">
-                <li class="carousel-slide current-slide"> <img src="assets/img/slide_bf6_1.jpg" alt="Image 1">
-                    <div class="carousel-text">Text Image #1</div>
-                </li>
-                <li class="carousel-slide"><img src="assets/img/slide_bf6_2.jpg" alt="Image 2">
-                    <div class="carousel-text">Text Image #2</div>
-                </li>
-                <li class="carousel-slide"><img src="assets/img/slide_bf6_3.jpg" alt="Image 3">
-                    <div class="carousel-text">Text Image #3</div>
-                </li>
-            </ul>
-        </div>
-        <button class="carousel-button next">
-                <svg id="carousel-arrows-next">
-                <polygon class="arrow arrow-top" points="27.9,37.6 1.3,1.8 0,3.3 25.3,37.6 0,71.9 1.3,73.7" />
-                <polygon class="arrow arrow-middle" points="27.9,37.6 1.3,1.8 0,3.3 25.3,37.6 0,71.9 1.3,73.7" />
-                <polygon class="arrow arrow-bottom" points="27.9,37.6 1.3,1.8 0,3.3 25.3,37.6 0,71.9 1.3,73.7" />
-            </svg>
+                <button id="wishlist-btn" class="btn-glow">Wishlist</button>
+            </header>
 
-        </button>
+            <main class="hero-content">
+                <h1>ECHOES OF TIME</h1>
+                
+                <div class="divider"></div>
 
-    </section>
-        <div class="test">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique nobis facere illum amet dignissimos, quae aspernatur aut cum ad praesentium delectus illo assumenda eos commodi dolorum eveniet optio molestias voluptate.
-        </div>
-        <div class="test">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vel quibusdam quod totam tempore consequatur tempora laboriosam sapiente magnam perferendis esse numquam modi blanditiis, hic dicta quo dolore est aspernatur necessitatibus.
+                <h2>Coming Soon &mdash; 2026</h2>
+                
+                <p class="tagline">Une aventure narrative inoubliable</p>
+
+                <p class="description">
+                    Plongez dans un voyage onirique où chaque souvenir forge votre destin.
+                    Explorez des ruines ancestrales, maîtrisez les échos du passé et révélez les secrets d'une civilisation éteinte.
+                </p>
+
+                <p class="platforms">Disponible sur PC &bull; PS5 &bull; Xbox Series</p>
+                <a href="#art-gallery" class="btn-decouvrir">Découvrir l'univers</a>
+            </main>
         </div>
 
-            <!-- add footer with button to scroll all the way to the top -->
+        <section id="the-lore" class="content-section">
+            <div class="container">
+                <h2>Un Monde Oublié</h2>
+                <p>Dans "Echoes of Time", vous incarnez Elara, une gardienne de souvenirs dans un monde où le temps s'effrite. Accompagnée de votre feu-follet, explorez des ruines ancestrales, résolvez des énigmes environnementales et ravivez les souvenirs perdus d'une civilisation éteinte.</p>
+                <p>Une expérience contemplative où chaque décors raconte une histoire, portée par une bande-son orchestrale envoûtante.</p>
+            </div>
+        </section>
 
-    <script src="assets/js/script.js"></script>
-</body> 
+        <section id="art-gallery" class="content-section dark-bg">
+            <div class="container">
+                <h2>Immersion dans le Monde</h2>
+                
+                <div class="carousel-wrapper">
+                    <div class="carousel-container">
+                        <button id="prev-btn" class="carousel-btn">❮</button>
+                        
+                        <div class="carousel-slide">
+                            <img src="/assets/img/Slide_1.jpg" alt="Slide Image 1" class="active">
+                            <img src="/assets/img/Slide_2.jpg" alt="Slide Image 2" loading="lazy">
+                            <img src="/assets/img/Slide_3.jpg" alt="Slide Image 3" loading="lazy">
+                        </div>
+                        
+                        <button id="next-btn" class="carousel-btn">❯</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <div class="container contact-wrapper">
+                
+                <div class="contact-info">
+                    <h2>Rejoignez l'Aventure</h2>
+                    <p>Une question sur le développement ? Un bug à signaler ? Ou simplement envie de discuter lore ?</p>
+                    
+                    <div class="info-item">
+                        <strong>Email :</strong> <br> contact@auroragames.studio
+                    </div>
+                    <div class="info-item">
+                        <strong>Studio :</strong> <br> 12 Avenue du Code, Paris
+                    </div>
+                    
+                    <div class="discord-box">
+                        <p class="join-discord">Rejoignez notre Discord officiel !</p>
+                        <i class='bx bxl-discord'></i>
+                    </div>
+                </div>
+
+                <div class="contact-form-container">
+                    <form id="contactForm">
+                        
+                        <div class="form-group">
+                            <label for="nom">Nom / Pseudo</label>
+                            <input type="text" id="nom" placeholder="Votre pseudo..." required>
+                            <span class="error-msg" id="error-nom"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="exemple@mail.com" required>
+                            <span class="error-msg" id="error-email"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Votre Message</label>
+                            <textarea id="message" rows="5" placeholder="Dites-nous tout..." required></textarea>
+                            <span class="error-msg" id="error-message"></span>
+                        </div>
+
+                        <button type="submit" class="btn-contact-submit">Envoyer le message</button>
+                        
+                        <p id="success-msg" class="success-hidden">Message envoyé avec succès ! 🚀</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-logo">Aurora Games</div>
+                <ul class="footer-links">
+                    <li><a href="#">Mentions Légales</a></li>
+                    <li><a href="#">Politique de confidentialité</a></li>
+                </ul>
+                <div class="socials">
+                    <span><i class='bx bxl-twitter'></i></span> 
+                    <span><i class='bx bxl-instagram'></i></span> 
+                    <span><i class='bx bxl-discord-alt'></i></span>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Aurora Games Studio. Tous droits réservés. Projet fictif BTS SIO.</p>
+            </div>
+        </footer>
+
+        <script src="assets/js/script.js"></script>
+    </body>
 </html>
