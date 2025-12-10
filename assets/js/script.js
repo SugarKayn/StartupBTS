@@ -1,73 +1,72 @@
 document.addEventListener('DOMContentLoaded', () => {
-
-    // ==================================================================
-    // CAROUSEL 
-    // ==================================================================
-    const track = document.querySelector('.carousel-slide');
+/* =========================================
+   Partie: Carousel 
+   ========================================= */
+    const catalogSlides = document.querySelectorAll('.catalog-slide');
+    const catNext = document.getElementById('cat-next');
+    const catPrev = document.getElementById('cat-prev');
     
+    if (catalogSlides.length > 0) {
+        let catIndex = 0;
+        let catIsMoving = false; 
+        let catAutoSlideTimer;
+        const catSlideInterval = 4000;
 
-    if (track) {
-        const slides = Array.from(track.children);
-        const nextButton = document.getElementById('next-btn');
-        const prevButton = document.getElementById('prev-btn');
-
-        let currentIndex = 0;
-        let isMoving = false;
-        let autoSlideTimer;
-        const slideInterval = 4000;
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.toggle('active', i === index);
-            });
+        function showCatalogSlide(index) {
+            catalogSlides.forEach(slide => slide.classList.remove('active'));
+            catalogSlides[index].classList.add('active');
         }
 
-        function nextSlide() {
-            if (isMoving) return;
-            isMoving = true;
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlide(currentIndex);
-            setTimeout(() => (isMoving = false), 600);
+        function nextCatalogSlide() {
+            if (catIsMoving) return; 
+            catIsMoving = true;     
+            catIndex++;
+            if (catIndex >= catalogSlides.length) {
+                catIndex = 0; 
+            }
+            showCatalogSlide(catIndex);
+
+            setTimeout(() => (catIsMoving = false), 600);
         }
 
-        function prevSlide() {
-            if (isMoving) return;
-            isMoving = true;
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlide(currentIndex);
-            setTimeout(() => (isMoving = false), 600);
+        function prevCatalogSlide() {
+            if (catIsMoving) return; 
+            catIsMoving = true; 
+
+            catIndex--;
+            if (catIndex < 0) {
+                catIndex = catalogSlides.length - 1; 
+            }
+            showCatalogSlide(catIndex);
+
+            setTimeout(() => (catIsMoving = false), 600);
         }
 
-        function startAutoSlide() {
-            autoSlideTimer = setInterval(nextSlide, slideInterval);
+        function startCatalogAutoSlide() {
+            catAutoSlideTimer = setInterval(nextCatalogSlide, catSlideInterval);
         }
 
-        function restartAutoSlide() {
-            clearInterval(autoSlideTimer);
-            startAutoSlide();
+        function restartCatalogAutoSlide() {
+            clearInterval(catAutoSlideTimer);
+            startCatalogAutoSlide();
         }
 
-
-
-
-        nextButton.addEventListener('click', () => {
-            nextSlide();
-            restartAutoSlide();
+        catNext.addEventListener('click', () => {
+            nextCatalogSlide();
+            restartCatalogAutoSlide();
         });
 
-        prevButton.addEventListener('click', () => {
-            prevSlide();
-            restartAutoSlide();
+        catPrev.addEventListener('click', () => {
+            prevCatalogSlide();
+            restartCatalogAutoSlide();
         });
 
-        showSlide(currentIndex);
-        startAutoSlide();
+        showCatalogSlide(catIndex);
+        startCatalogAutoSlide();
     }
-
-
-    // ==================================================================
-    // FORMULAIRE DE CONTACT 
-    // ==================================================================
+/* =========================================
+    Partie: Contact 
+   ========================================= */
     const form = document.getElementById('contactForm');
     
     if (form) {
@@ -124,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==================================================================
-    // BOUTON WISHLIST 
+    // Partie: Bouton Wishlist
     // ==================================================================
     const wishlistBtn = document.getElementById('wishlist-btn');
     if (wishlistBtn) {
