@@ -1,16 +1,23 @@
+/* =========================================
+   RESET & BASE
+   ========================================= */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Gestion simplifiée des largeurs/padding */
 }
 
 body {
     font-family: 'Lato', sans-serif;
     color: white;
     background-color: #020205; 
-    overflow-x: hidden;
+    overflow-x: hidden; /* Évite le scroll horizontal involontaire */
 }
 
+/* HERO SECTION :
+   Utilisation d'un dégradé semi-transparent par-dessus l'image de fond 
+   pour garantir la lisibilité du texte blanc.
+*/
 .hero-background {
     width: 100%;
     min-height: 100vh; 
@@ -24,14 +31,16 @@ body {
 }
 
 /* =========================================
-    Partie: Header 
+   Partie: HEADER
    ========================================= */
 header {
+    /* POSITION FIXED : Le menu reste collé en haut même quand on scrolle */
     position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
 
+    /* Z-INDEX : Force le menu à être au-dessus de tout le reste */
     z-index: 1000; 
     display: flex;
     justify-content: space-between;
@@ -53,7 +62,7 @@ header {
 
 nav ul {
     list-style: none;
-    display: flex;
+    display: flex; /* Flexbox pour aligner les liens horizontalement */
     gap: 30px;
 }
 
@@ -71,6 +80,7 @@ nav a:hover, nav a.active {
     text-shadow: 0 0 10px rgba(255,255,255,0.8); 
 }
 
+/* Style pour le bouton Wishlist */
 .btn-glow {
     background: transparent;
     color: #fff;
@@ -91,7 +101,7 @@ nav a:hover, nav a.active {
 }
 
 .hero-content {
-    flex-grow: 1;
+    flex-grow: 1; /* Occupe tout l'espace restant pour centrer le contenu verticalement */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -99,6 +109,10 @@ nav a:hover, nav a.active {
     margin-top: 20px;
 }
 
+/* CLAMP() : 
+   La taille de la police s'adapte fluidement entre 3rem et 5rem 
+   selon la largeur de l'écran (Responsive Typography).
+*/
 h1 {
     font-family: 'Cinzel', serif;
     font-size: clamp(3rem, 8vw, 5rem); 
@@ -153,7 +167,7 @@ p {
     padding: 15px 40px;
     max-width: 300px; 
     text-align: center;
-    background: linear-gradient(45deg, #64ffda, #48bca0); 
+    background: linear-gradient(45deg, #64ffda, #48bca0); /* Dégradé */
     color: #000;
     text-decoration: none;
     font-weight: bold;
@@ -163,7 +177,7 @@ p {
 }
 
 .btn-decouvrir:hover {
-    transform: translateY(-3px); 
+    transform: translateY(-3px); /* Petit saut au survol */
     box-shadow: 0 10px 20px rgba(100, 255, 218, 0.4); 
 }
 
@@ -180,7 +194,7 @@ p {
 
 .container {
     max-width: 1200px; 
-    margin: 0 auto; 
+    margin: 0 auto; /* Centre le conteneur horizontalement */
     width: 100%;
 }
 
@@ -191,76 +205,8 @@ p {
     margin-bottom: 30px;
 }
 
-
 /* =========================================
-    Partie: Carousel 
-   ========================================= */
-/*
-   .carousel-wrapper {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.carousel-container {
-    position: relative;
-    width: 100%;
-    max-width: 1000px; 
-    aspect-ratio: 16/9; 
-    border: 2px solid #64ffda;
-    box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
-    overflow: hidden; 
-    border-radius: 10px;
-    background-color: #000; 
-}
-
-.carousel-slide {
-    width: 100%;
-    height: 100%; 
-    display: flex;
-}
-
-.carousel-slide img {
-    width: 100%;       
-    height: 100%;      
-    object-fit: cover; 
-    display: none; 
-}
-
-.carousel-slide img.active { 
-    display: block; 
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    font-size: 2rem;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: 0.3s;
-    z-index: 5;
-}
-
-.carousel-btn:hover { 
-    background-color: #64ffda; 
-    color: black; 
-}
-
-#prev-btn { 
-    left: 0; 
-}
-
-#next-btn { 
-    right: 0; 
-}
-
-*/
-/* =========================================
-    Partie: Carousel Jeux
+   Partie: Carrousel
    ========================================= */
 .split-carousel {
     position: relative;
@@ -274,16 +220,20 @@ p {
     border: 1px solid #222;
 }
 
+/* LOGIQUE DU CARROUSEL :
+   Par défaut, tous les slides sont cachés (display: none).
+   Seul celui qui a la classe .active (ajoutée par JS) s'affiche en Flexbox.
+*/
 .catalog-slide {
     display: none; 
     width: 100%;
     align-items: center;
     gap: 40px;
-    animation: fadeInSlide 0.6s ease-out;
+    animation: fadeInSlide 0.6s ease-out; /* Animation d'apparition */
 }
 
 .catalog-slide.active {
-    display: flex;
+    display: flex; /* Image à gauche, texte à droite */
 }
 
 @keyframes fadeInSlide {
@@ -292,7 +242,7 @@ p {
 }
 
 .slide-visual {
-    flex: 1.5; 
+    flex: 1.5; /* L'image prend plus de place que le texte */
     height: 350px;
     overflow: hidden;
     border-radius: 15px;
@@ -303,12 +253,12 @@ p {
 .slide-visual img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* L'image remplit la zone sans se déformer */
     transition: transform 0.5s;
 }
 
 .slide-visual:hover img {
-    transform: scale(1.05);
+    transform: scale(1.05); /* Zoom au survol */
 }
 
 .slide-text {
@@ -331,7 +281,6 @@ p {
     color: #bbb;
 }
 
-/* Liste des détails (Genre / Date) */
 .specs {
     list-style: none;
     padding: 0;
@@ -388,15 +337,12 @@ p {
     transform: scale(1.2);
 }
 
-
-
-
 /* =========================================
-    Partie: Contact 
+   Partie: Contact 
    ========================================= */
-   .contact-wrapper {
+.contact-wrapper {
     display: flex;
-    flex-wrap: wrap; 
+    flex-wrap: wrap; /* Permet de passer à la ligne sur mobile */
     gap: 50px;
     align-items: flex-start;
     text-align: left; 
@@ -474,6 +420,7 @@ input, textarea {
     transition: 0.3s;
 }
 
+/* Focus : Change la bordure en Cyan quand on clique dans le champ */
 input:focus, textarea:focus {
     outline: none;
     border-color: #64ffda; 
@@ -499,7 +446,7 @@ input:focus, textarea:focus {
 }
 
 .error-msg {
-    color: #ff6b6b;
+    color: #ff6b6b; 
     font-size: 0.8rem;
     margin-top: 5px;
     display: block;
@@ -518,22 +465,14 @@ input:focus, textarea:focus {
 }
 
 @keyframes fadeIn { 
-    from { 
-        opacity: 0; } 
-    to { 
-        opacity: 1; } 
-    }
-
-
+    from { opacity: 0; } 
+    to { opacity: 1; } 
+}
 
 
 /* =========================================
-    Partie: About Us 
+   Partie: About Us & Team
    ========================================= */
-
-
-
-
 .about-hero {
     padding: 100px 20px 60px; 
     text-align: center;
@@ -595,7 +534,6 @@ input:focus, textarea:focus {
     object-fit: cover;
     transition: transform 0.5s;
 }
-
 .team_divider {
     width: 100%; 
     max-width: 650px; 
@@ -604,7 +542,6 @@ input:focus, textarea:focus {
     margin: 20px auto; 
     box-shadow: 0 0 10px #64ffda;
 }
-
 .team-card:hover .card-img img {
     transform: scale(1.1); 
 }
@@ -654,12 +591,9 @@ input:focus, textarea:focus {
 }
 
 
-
 /* =========================================
-    Partie: FOOTER 
+   Partie: FOOTER 
    ========================================= */
-
-
 footer {
     background: #020205;
     padding: 50px 20px 20px;
@@ -717,13 +651,12 @@ footer {
 }
 
 
-
 /* =========================================
-    Partie: RESPONSIVE 
+   RESPONSIVE (Mobiles et Tablettes)
+   Media Query pour les écrans < 900px
    ========================================= */
 @media (max-width: 900px) {
-    
-    
+
     header {
         background: rgba(0, 0, 0, 0.95); 
         flex-direction: column;
@@ -733,7 +666,7 @@ footer {
     }
 
     #wishlist-btn {
-        display: none; 
+        display: none; /* Cache le bouton sur petit écran */
     }
 
     nav ul {
@@ -750,22 +683,19 @@ footer {
         margin-top: 0; 
     }
 
-    .divider { 
-        margin: 20px auto; 
-    }
-    .description {
-        text-align: center; 
-    }
-
-    .content-section {
-        padding: 50px 20px; 
-    }
+    .divider { margin: 20px auto; }
+    .description { text-align: center; }
+    .content-section { padding: 50px 20px; }
     
     .carousel-container {
         height: auto;
         aspect-ratio: 16/9;
     }
 
+    /* TRANSFORMATION DU CATALOGUE POUR MOBILE :
+       On change la direction flex en 'column' pour empiler
+       l'image au-dessus du texte.
+    */
     .catalog-slide.active { 
         flex-direction: column; 
         gap: 20px;
@@ -790,6 +720,7 @@ footer {
         padding-left: 0;
     }
 
+    /* Replace les flèches du carrousel en bas */
     .cat-btn {
         position: absolute;
         bottom: 0; 
@@ -804,15 +735,11 @@ footer {
         justify-content: center;
         font-size: 1.5rem;
     }
-    .cat-btn.prev { 
-        left: 10px; 
-    }
-    .cat-btn.next { 
-        right: 10px; 
-    }
+    .cat-btn.prev { left: 10px; }
+    .cat-btn.next { right: 10px; }
     
     .split-carousel {
-        padding-bottom: 60px; 
+        padding-bottom: 60px; /* Laisse de la place pour les flèches */
     }
 
     .contact-wrapper {
